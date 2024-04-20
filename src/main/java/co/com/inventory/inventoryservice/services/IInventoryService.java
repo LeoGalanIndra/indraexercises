@@ -3,16 +3,20 @@ package co.com.inventory.inventoryservice.services;
 
 import co.com.inventory.inventoryservice.models.ProductDto;
 
+import java.util.List;
+
 public interface IInventoryService {
 
-    public String create(ProductDto productDto) throws IllegalStateException;
+    String create(ProductDto productDto) throws IllegalStateException;
 
-    public String update(ProductDto productDto) throws IllegalStateException ;
-
-
-    public String get() ;
+    void update(ProductDto productDto) throws IllegalStateException ;
 
 
+    List<ProductDto> getById(String id) ;
+
+    List<ProductDto> getByName(String name) ;
+
+    List<ProductDto> getAll() ;
 
 
 }
