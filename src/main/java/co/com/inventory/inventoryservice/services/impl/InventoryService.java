@@ -6,6 +6,9 @@ import co.com.inventory.inventoryservice.repositories.ICatalogRepository;
 import co.com.inventory.inventoryservice.services.IInventoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.catalina.mapper.Mapper;
+import org.modelmapper.Converter;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.spi.MappingContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.convert.TypeMapper;
 import org.springframework.stereotype.Service;
@@ -13,7 +16,11 @@ import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -23,35 +30,72 @@ public class InventoryService implements IInventoryService {
     ICatalogRepository repository ;
 
 
+    ModelMapper modelMapper = new ModelMapper();
+
 
     @Override
     public String create(ProductDto productDto) throws IllegalStateException {
 
+        try{
+            Product product = modelMapper.map(productDto, Product.class);
+            product.setId(UUID.randomUUID().toString());
+            product = repository.save(product);
 
-
-
-        // Product product = mapper.
-        return null;
+            return product.getId();
+        }catch (Exception e){
+            throw  new IllegalStateException("Proceso de creación NO exitoso!");
+        }
     }
 
     @Override
     public void update(ProductDto productDto) throws IllegalStateException {
 
+        try{
+            Product product = modelMapper.map(productDto, Product.class);
+            repository.save(product);
+        }catch (Exception e){
+            throw  new IllegalStateException("Proceso de actualizacion NO exitoso!");
+        }
     }
 
     @Override
     public List<ProductDto> getById(String id) {
-        return null;
+
+        Optional<Product> productOptional = repository.findById(id);
+        List<ProductDto> values = new ArrayList<>();
+        if(productOptional.isPresent()){
+            values.add(modelMapper.map(productOptional.get(), ProductDto.class));
+        }
+        return values;
     }
 
     @Override
     public List<ProductDto> getByName(String name) {
-        return null;
+
+        List<Product> results = repository.findByName(name);
+        List<ProductDto> values = new ArrayList<>();
+        if(!results.isEmpty()){
+            values = results
+                    .stream()
+                    .map(value -> modelMapper.map(value, ProductDto.class))
+                    .collect(Collectors.toList());
+        }
+        return values;
     }
 
     @Override
     public List<ProductDto> getAll() {
-        return null;
+
+        List<Product> results = repository.findAll();
+        List<ProductDto> values = new ArrayList<>();
+        if(!results.isEmpty()){
+            values = results
+                    .stream()
+                    .map(value -> modelMapper.map(value, ProductDto.class))
+                    .collect(Collectors.toList());
+        }
+        return values;
+
     }
 
 
