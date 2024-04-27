@@ -5,6 +5,7 @@ import co.com.inventory.inventoryservice.models.ProductDto;
 import co.com.inventory.inventoryservice.repositories.ICatalogRepository;
 import co.com.inventory.inventoryservice.services.IInventoryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.mapper.Mapper;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
@@ -22,7 +23,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service
 public class InventoryService implements IInventoryService {
 
@@ -38,11 +39,11 @@ public class InventoryService implements IInventoryService {
 
         try{
             Product product = modelMapper.map(productDto, Product.class);
-            product.setId(UUID.randomUUID().toString());
             product = repository.save(product);
 
             return product.getId();
         }catch (Exception e){
+            log.error(e.getMessage(), e);
             throw  new IllegalStateException("Proceso de creación NO exitoso!");
         }
     }
