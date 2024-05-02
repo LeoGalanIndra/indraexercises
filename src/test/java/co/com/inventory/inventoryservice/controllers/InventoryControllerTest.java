@@ -1,6 +1,5 @@
-package co.com.inventory.inventoryservice;
+package co.com.inventory.inventoryservice.controllers;
 
-import co.com.inventory.inventoryservice.controllers.InventoryController;
 import co.com.inventory.inventoryservice.models.ProductDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
