@@ -1,9 +1,13 @@
 package co.com.inventory.inventoryservice.models;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
+@ToString
 @Data
 public class ProductDto {
 
