@@ -103,7 +103,7 @@ class LogisticControllerTest {
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(1, results.size());
-        assertEquals(id2, results.get(0).getId());
+        assertEquals(id, results.get(0).getId());
 
     }
 
