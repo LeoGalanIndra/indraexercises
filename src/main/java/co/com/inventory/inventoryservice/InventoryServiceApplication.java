@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class InventoryServiceApplication {
 
@@ -18,6 +20,10 @@ public class InventoryServiceApplication {
 
 		TargetObject targetObject = context.getBean(TargetObject.class);
 		targetObject.sayHello("leo Galan");
+
+		// Arrays.binarySearch();
+		StringBuffer stringBuffer =  new StringBuffer( ) ;
+		String str  = stringBuffer.reverse().toString() ;
 
 	}
 
