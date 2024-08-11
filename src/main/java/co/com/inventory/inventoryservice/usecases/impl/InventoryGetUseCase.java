@@ -13,8 +13,14 @@ import java.util.Map;
 @Service
 public class InventoryGetUseCase implements IInventoryGetUseCase {
 
-    @Autowired
-    IInventoryService service ;
+
+    private static IInventoryService service ;
+
+    InventoryGetUseCase(IInventoryService service){
+        this.service = service ;
+    }
+
+
 
 
     @Override
