@@ -36,7 +36,7 @@ public class InventoryController {
         if(optionals != null && !optionals.isEmpty()){
 
             List<ProductDto> data = getUseCase.read(optionals) ;
-            if(data != null && data.isEmpty())
+            if(data != null && !data.isEmpty())
                 return  new ResponseEntity<>(data, HttpStatus.OK);
 
         }
@@ -50,7 +50,7 @@ public class InventoryController {
 
         try{
             String id = postUseCase.create(product) ;
-            return  ResponseEntity.status(HttpStatus.ACCEPTED).body(id);
+            return  ResponseEntity.status(HttpStatus.CREATED).body(id);
         }catch (Exception e){
 
         }
