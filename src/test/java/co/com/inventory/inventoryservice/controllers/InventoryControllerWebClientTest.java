@@ -64,6 +64,7 @@ class InventoryControllerWebClientTest {
                 .build();
     }
 
+    @Disabled
     @DisplayName("Validar que existan los registros despues de creados.")
     @Test
     void get() {

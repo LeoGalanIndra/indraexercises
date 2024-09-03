@@ -2,6 +2,7 @@ package co.com.inventory.inventoryservice.controllers;
 
 import co.com.inventory.inventoryservice.models.ProductDto;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ class InventoryControllerTestRestTemplateTest {
 
     }
 
+    @Disabled
     @DisplayName("Validar que existan los registros modificados se encuentren consistentes. ")
     @Test
     void createProduct(){

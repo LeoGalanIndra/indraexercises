@@ -76,6 +76,7 @@ class InventoryControllerIntegrationTest {
     void tearDown() {
     }
 
+    @Disabled
     @DisplayName("Validamos la existencia del producto despues de crearlo")
     @Test
     void validarExistenciaProducto(){

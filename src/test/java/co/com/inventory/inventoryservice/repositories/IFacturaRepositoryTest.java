@@ -16,7 +16,7 @@ import java.util.Optional;
 @DataJpaTest
 public class IFacturaRepositoryTest {
 
-    /**
+
     @Autowired
     IFacturaRepository repository ;
 
@@ -135,7 +135,7 @@ public class IFacturaRepositoryTest {
     }
 
 
-    @Disabled
+    // @Disabled
     @DisplayName("metodo para chequear el guardado en la base de datos")
     @Test
 
@@ -157,7 +157,7 @@ public class IFacturaRepositoryTest {
     }
 
 
-    @Disabled
+    // @Disabled
     @DisplayName("metodo para validar la integridad de la informacion al momento de guardar la factura en la base de datos ")
     @Test
 
@@ -178,7 +178,7 @@ public class IFacturaRepositoryTest {
 
     }
 
-    @Disabled
+    // @Disabled
     @DisplayName("validar todas las consultar registradas")
     @Test
     public void consultarTodasLasFacturas(){
@@ -194,7 +194,7 @@ public class IFacturaRepositoryTest {
 
     }
 
-    @Disabled
+    // @Disabled
     @DisplayName("validar la consulta de una factura ")
     @Test
     public void consultarUnaFacturaDeLaBaseDatos(){
@@ -212,7 +212,7 @@ public class IFacturaRepositoryTest {
 
     }
 
-    @Disabled
+    // @Disabled
     @DisplayName("validar la consulta de una factura por numero de recibo ")
     @Test
     public void consultarUnaFacturaDeLaBaseDatosPorRecibo(){
@@ -232,7 +232,7 @@ public class IFacturaRepositoryTest {
 
     }
 
-    @Disabled
+    // @Disabled
     @DisplayName("validar la consulta de una factura por id cliente y requiere envio de factura")
     @Test
     public void consultarUnaFacturaDeLaBaseDatosPorClienteYRequiereFactura(){
@@ -250,5 +250,5 @@ public class IFacturaRepositoryTest {
 
 
 
-    }*/
+    }
 }
