@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface ICatalogRepository extends JpaRepository<Product, String> {
 
+
     List<Product> findByName(String name);
 
 }

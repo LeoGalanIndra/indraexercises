@@ -19,6 +19,7 @@ import java.util.Map;
 @RequestMapping("inventory")
 public class InventoryController {
 
+
     @Autowired
     IInventoryGetUseCase getUseCase ;
 
