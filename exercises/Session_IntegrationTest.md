@@ -5,8 +5,11 @@ Elaboración del taller practico de pruebas de integración.
 
 ## Sesiones 
 
-* Practica 1: Elaboración de casos de prueba de integracion utilizando WebTestClient
-* Practica 2: Elaboración de casos de prueba de integracion utilizando RestTemplateClient
+* Practica 1: Elaboración de casos de prueba de integración utilizando WebTestClient
+* Practica 2: Elaboración de casos de prueba de integración utilizando RestTemplateClient
+* Practica 3: Elaboración de casos de prueba de integración utilizando Test Containers 
+* Practica 4: Elaboración de casos de prueba de Web MVC
+* Practica 5: Elaboración de casos de prueba con DataJpaTest
 
 
 ### Practica 1 - Utilizando Web Test Client
@@ -85,3 +88,56 @@ Elaboración del taller practico de pruebas de integración.
 12. Creamos un metodo para retornar la URL del servicio a direccionar. 
 13. Codificamos la prueba. 
 14. Ejecutamos la prueba.
+
+
+### Practica 3 - Test Containers 
+
+1. Adicionar la dependencias test containers al archivo de configuración.
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.20.1</version>
+            <scope>test</scope>
+        </dependency>
+    
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-testcontainers</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+2. Crear el caso de prueba sobre el controlador a validar 
+
+3. Adicionar las siguientes anotaciones 
+
+> @Testcontainers
+>  @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+>  @Transactional
+
+4. Declaramos una instancia de Test Containers 
+
+> @Container
+> @ServiceConnection
+> static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16.0");
+
+> :warning: **Importante:** En el servidor el cual se ejecutará la prueba debe tener el ambiente de docker en ejecución.
+
