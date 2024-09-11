@@ -39,7 +39,7 @@ class InventoryControllerTestRestTemplateTest {
 
     }
 
-    @Disabled
+
     @DisplayName("Validar que existan los registros modificados se encuentren consistentes. ")
     @Test
     void createProduct(){
@@ -84,6 +84,6 @@ class InventoryControllerTestRestTemplateTest {
     }
 
     private String getEntityUrl(){
-        return "http://localhost:" + port + "/api/v1/inventory" ;
+        return "/inventory" ;
     }
 }

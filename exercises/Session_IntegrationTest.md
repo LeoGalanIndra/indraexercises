@@ -129,15 +129,61 @@ Elaboración del taller practico de pruebas de integración.
 
 3. Adicionar las siguientes anotaciones 
 
-> @Testcontainers
->  @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
->  @Transactional
+       @Testcontainers
+       @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+       @Transactional
 
 4. Declaramos una instancia de Test Containers 
 
-> @Container
-> @ServiceConnection
-> static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16.0");
+       @Container
+       @ServiceConnection
+       static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16.0");
 
 > :warning: **Importante:** En el servidor el cual se ejecutará la prueba debe tener el ambiente de docker en ejecución.
+
+5. Implementamos un caso de prueba para validar que el container se encuentra disponible 
+
+       @Test
+       void connectionEstablished() {
+            Assertions.assertThat(postgres.isCreated()).isTrue();
+            Assertions.assertThat(postgres.isRunning()).isTrue();
+       }
+
+6. Se implementa el caso de prueba
+
+> Utilizando Test Rest Template crear un producto 
+> con el ID del producto creado, consultar un artículo. 
+
+
+### Practica 3 - Test Containers
+
+
+1. Crear el caso de prueba sobre el repositorio a validar
+
+2. Adicionar las siguientes anotaciones
+
+       @Testcontainers
+       @DataJpaTest
+
+3. Declaramos una instancia de Test Containers
+
+       @Container
+       @ServiceConnection
+       static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16.0");
+
+> :warning: **Importante:** En el servidor el cual se ejecutará la prueba debe tener el ambiente de docker en ejecución.
+
+4. Implementamos un caso de prueba para validar que el container se encuentra disponible
+
+       @Test
+       void connectionEstablished() {
+            Assertions.assertThat(postgres.isCreated()).isTrue();
+            Assertions.assertThat(postgres.isRunning()).isTrue();
+       }
+
+5. Se implementa el caso de prueba
+
+> Utilizando Test Rest Template crear un producto
+> con el ID del producto creado, consultar un artículo. 
+
 
